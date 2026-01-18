@@ -177,10 +177,11 @@ plt.ylabel('Score', fontsize=22)
 plt.title('Performance Metrics vs Distance', fontsize=24)
 plt.legend(loc='lower left', fontsize=22, frameon=True, shadow=True, borderpad=1)
 plt.grid(True, linestyle='--', linewidth=0.5)
-plt.xticks(fontsize=20)  # 增大刻度字体
-plt.yticks(fontsize=20)  # 增大刻度字体
+plt.xticks(fontsize=20)  
+plt.yticks(fontsize=20)  
 plt.tight_layout()
 plt.savefig('performance_vs_distance_3.png', dpi=300)
 plt.show()
+
 
 
