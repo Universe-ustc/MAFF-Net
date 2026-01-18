@@ -54,7 +54,7 @@ def read_image(file_path):
     if not os.path.exists(file_path):
         print(f"文件不存在: {file_path}")
         return None
-    image = Image.open(file_path).convert('RGB')  # 确保图像为RGB格式
+    image = Image.open(file_path).convert('RGB')  
     return image
 
 class MyModel(nn.Module):
@@ -182,6 +182,7 @@ plt.yticks(fontsize=20)
 plt.tight_layout()
 plt.savefig('performance_vs_distance_3.png', dpi=300)
 plt.show()
+
 
 
 
