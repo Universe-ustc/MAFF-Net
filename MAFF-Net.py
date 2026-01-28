@@ -495,7 +495,7 @@ def run_experiment(sensor_file, image_folder, lstm_model, resnet_model, preproce
     recall = recall_score(labels, predictions, zero_division=0)
     f1 = f1_score(labels, predictions, zero_division=0)
 
-    n_test_samples = min(10, min(len(image_paths), len(sensor_data)))  # 使用10个样本进行测试
+    n_test_samples = min(10, min(len(image_paths), len(sensor_data)))  
     
     test_image_paths = image_paths[:n_test_samples]
     test_sensor_data = sensor_data[:n_test_samples] if len(sensor_data) >= n_test_samples else sensor_data
@@ -901,12 +901,12 @@ def main():
                 method_stats['param_count_mean'] = np.mean(param_counts)
                 method_stats['param_count_std'] = np.std(param_counts)
             if resnet_params_list:
-                method_stats['resnet_params'] = resnet_params_list[0]  # ResNet参数量是固定的
+                method_stats['resnet_params'] = resnet_params_list[0]
             if rf_params_list:
                 method_stats['rf_params_mean'] = np.mean(rf_params_list)
                 method_stats['rf_params_std'] = np.std(rf_params_list)
             if lstm_params_list:
-                method_stats['lstm_params'] = lstm_params_list[0]  # LSTM参数量是固定的
+                method_stats['lstm_params'] = lstm_params_list[0]  
             if pca_params_list:
                 method_stats['pca_params_mean'] = np.mean(pca_params_list)
                 method_stats['pca_params_std'] = np.std(pca_params_list)
@@ -917,12 +917,12 @@ def main():
                 method_stats['total_flops_mean'] = np.mean(flops_list)
                 method_stats['total_flops_std'] = np.std(flops_list)
             if resnet_flops_list:
-                method_stats['resnet_flops'] = resnet_flops_list[0]  # ResNet FLOPs是固定的
+                method_stats['resnet_flops'] = resnet_flops_list[0]  
             if rf_flops_list:
                 method_stats['rf_flops_mean'] = np.mean(rf_flops_list)
                 method_stats['rf_flops_std'] = np.std(rf_flops_list)
             if lstm_flops_list:
-                method_stats['lstm_flops'] = lstm_flops_list[0]  # LSTM FLOPs是固定的（基于平均序列长度）
+                method_stats['lstm_flops'] = lstm_flops_list[0] 
             if pca_flops_list:
                 method_stats['pca_flops_mean'] = np.mean(pca_flops_list)
                 method_stats['pca_flops_std'] = np.std(pca_flops_list)
@@ -956,7 +956,7 @@ def main():
             inf_time_str = f"{stats.get('inference_time_mean', 0):.2f}±{stats.get('inference_time_std', 0):.2f}" if 'inference_time_mean' in stats else "N/A"
             inf_speed_str = f"{stats.get('inference_speed_mean', 0):.2f}±{stats.get('inference_speed_std', 0):.2f}" if 'inference_speed_mean' in stats else "N/A"
             param_str = f"{stats.get('param_count_mean', 0):,.0f}±{stats.get('param_count_std', 0):,.0f}" if 'param_count_mean' in stats else "N/A"
-            flops_mean = stats.get('total_flops_mean', 0) / 1e9  # 转换为GFLOPs
+            flops_mean = stats.get('total_flops_mean', 0) / 1e9 
             flops_std = stats.get('total_flops_std', 0) / 1e9
             flops_str = f"{flops_mean:.2f}±{flops_std:.2f}" if 'total_flops_mean' in stats else "N/A"
             print(f"{method.upper():<15} {inf_time_str:<15} {inf_speed_str:<18} {param_str:<18} {flops_str:<20}")
@@ -991,3 +991,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
